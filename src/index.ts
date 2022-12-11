@@ -38,7 +38,7 @@ const prepVercel = async () => {
   console.log("⚡️ Installing 'vercel' CLI...");
   console.log("⚡️");
 
-  const vercelBuild = spawn("npm", ["install", "-D", "vercel"]);
+  const vercelBuild = spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["install", "-D", "vercel"]);
 
   vercelBuild.stdout.on("data", (data) => {
     const lines: string[] = data.toString().split("\n");
